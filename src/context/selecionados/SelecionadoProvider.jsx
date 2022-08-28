@@ -5,12 +5,12 @@ import PropTypes from 'prop-types'
 export const SelecionadoProvider = ({ children }) => {
   const [selecionados, setSelecionados] = useState([]);
 
-  const handleSelecionar = (produto) => {
-    if (selecionados.some((item) => item === produto.id)) {
-      setSelecionados(selecionados.filter((item) => item !== produto.id));
+  const handleSelecionar = (id) => {    
+    if (selecionados.some((item) => item === id)) {
+      setSelecionados(selecionados.filter((item) => item !== id));
       return;
     }
-    setSelecionados([...selecionados, produto.id]);
+    setSelecionados([...selecionados, id]);
   };
 
   const isSelecionado = (id) => {
@@ -19,7 +19,7 @@ export const SelecionadoProvider = ({ children }) => {
   return (
     <>
       <SelecionadoContext.Provider
-        value={{ handleSelecionar, isSelecionado }}
+        value={{ selecionar: handleSelecionar, onSelecionado: isSelecionado }}
       >
         {children}
       </SelecionadoContext.Provider>

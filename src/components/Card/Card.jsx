@@ -1,17 +1,20 @@
 import PropTypes from 'prop-types';
-
 import styles from './Card.module.css';
+import { useSelecionado } from '../../context/selecionados/useSelecionado';
 
-export const Card = ({ produto, selecionado, onSelecionar }) => (
-  <button
-    onClick={() => onSelecionar(produto.id)}
-    className={`${styles.card} ${selecionado ? styles.cardSelecionado : ''}`}
+export const Card = ({ produto }) => {
+  const  { selecionar, onSelecionado } = useSelecionado();
+  
+  return(
+    <>
+    <button
+    onClick={() => selecionar(produto.id)}
+    className={`${styles.card} ${onSelecionado(produto.id) ? styles.cardSelecionado : ''}`}
   >
     <img className={styles.img} alt='Foto do prato' src={produto.img} height={200} />
 
     <div className={styles.info}>
       <h2 className={styles.infoTitulo}>{produto.nome}</h2>
-
       <p className={styles.infoDescricao}>{produto.descricao}</p>
     </div>
 
@@ -23,7 +26,10 @@ export const Card = ({ produto, selecionado, onSelecionar }) => (
       <p>{produto.tempoPreparo}</p>
     </div>
   </button>
-);
+    </>
+)
+  
+  };
 
 Card.propTypes = {
   produto: PropTypes.shape({
@@ -34,6 +40,4 @@ Card.propTypes = {
     valor: PropTypes.number.isRequired,
     tempoPreparo: PropTypes.string.isRequired,
   }),
-  selecionado: PropTypes.bool,
-  onSelecionar: PropTypes.func,
 };
