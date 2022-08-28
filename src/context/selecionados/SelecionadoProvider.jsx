@@ -19,7 +19,7 @@ export const SelecionadoProvider = ({ children }) => {
   return (
     <>
       <SelecionadoContext.Provider
-        value={{ selecionados, handleSelecionar, isSelecionado }}
+        value={{ handleSelecionar, isSelecionado }}
       >
         {children}
       </SelecionadoContext.Provider>
