@@ -3,7 +3,7 @@ import { Secao, FiltroSecao } from '@components';
 import { produtos } from '@services';
 
 export const Produtos = ()=>{
-    const [filtro, setFiltro] = useState(null);
+  const [filtro, setFiltro] = useState(null);
 
   const secoes = Array.from(new Set(produtos.map((prod) => prod.secao)));
 

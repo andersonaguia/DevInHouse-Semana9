@@ -4,7 +4,7 @@ import { useSelecionado } from '../../context/selecionados/useSelecionado';
 
 export const Card = ({ produto }) => {
   const  { selecionar, onSelecionado } = useSelecionado();
-  
+ 
   return(
     <>
     <button

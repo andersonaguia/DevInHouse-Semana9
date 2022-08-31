@@ -16,10 +16,11 @@ export const SelecionadoProvider = ({ children }) => {
   const isSelecionado = (id) => {
     return selecionados.some((item) => item === id);
   };
+  
   return (
     <>
       <SelecionadoContext.Provider
-        value={{ selecionar: handleSelecionar, onSelecionado: isSelecionado }}
+        value={{ selecionar: handleSelecionar, onSelecionado: isSelecionado, selecionados }}
       >
         {children}
       </SelecionadoContext.Provider>
