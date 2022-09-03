@@ -16,11 +16,15 @@ export const SelecionadoProvider = ({ children }) => {
   const isSelecionado = (id) => {
     return selecionados.some((item) => item === id);
   };
+
+  const handleExcluir = () => {
+  setSelecionados([])   
+  }
   
   return (
     <>
       <SelecionadoContext.Provider
-        value={{ selecionar: handleSelecionar, onSelecionado: isSelecionado, selecionados }}
+        value={{ selecionar: handleSelecionar, onSelecionado: isSelecionado, excluir: handleExcluir, selecionados }}
       >
         {children}
       </SelecionadoContext.Provider>
